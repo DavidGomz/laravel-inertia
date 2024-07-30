@@ -1,18 +1,22 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
+use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
+Route::get('/', [PostController::class, 'index']);
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::resource('posts', PostController::class)->except('index');
+
+// Route::get('/', function () {
+//     // return inertia('Home');
+
+//     return Inertia::render('Home', ['name' => 'Mike']);
+// });
+// // Route::inertia('/', 'Home');
+
+
+// Route::get('/about', function () {
+
+//     return Inertia::render('About');
+// });
